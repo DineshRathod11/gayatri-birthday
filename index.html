@@ -1,324 +1,440 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Birthday Protocol — Gayatri</title>
+<meta charset="UTF-8">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+<!-- IMPORTANT FOR MOBILE -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<title>Birthday Protocol — Gayatri</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    background: #05070a;
+    color: #00ff9d;
+    font-family: "Courier New", monospace;
+    min-height: 100vh;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+/* MAIN TERMINAL */
+.container {
+    width: 100%;
+    max-width: 720px;
+    background: rgba(5, 10, 12, 0.97);
+    border: 1px solid #00ff9d;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 0 25px rgba(0,255,157,0.15);
+}
+
+/* TOP BAR */
+.topbar {
+    height: 42px;
+    background: #0b1114;
+    border-bottom: 1px solid #164b3a;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    color: #7b8a84;
+    font-size: 12px;
+}
+
+.dots {
+    display: flex;
+    gap: 6px;
+    margin-right: 10px;
+}
+
+.dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #555;
+}
+
+/* TERMINAL CONTENT */
+.terminal {
+    padding: 25px 22px;
+}
+
+.line {
+    margin: 8px 0;
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+.green {
+    color: #00ff9d;
+}
+
+.white {
+    color: #e8fff5;
+}
+
+.gray {
+    color: #7b8a84;
+}
+
+.pink {
+    color: #ff75c3;
+}
+
+.yellow {
+    color: #ffe66d;
+}
+
+/* PROFILE */
+.profile {
+    margin: 22px 0;
+    padding: 16px;
+    border: 1px solid #164b3a;
+    border-radius: 9px;
+    background: rgba(0,255,157,0.025);
+}
+
+.profile .line {
+    margin: 7px 0;
+}
+
+/* BIRTHDAY */
+.birthday {
+    text-align: center;
+    margin-top: 28px;
+    animation: fadeIn 1.2s ease;
+}
+
+.birthday h1 {
+    color: #ff75c3;
+    font-size: clamp(26px, 7vw, 46px);
+    line-height: 1.25;
+    margin-bottom: 20px;
+    text-shadow: 0 0 18px rgba(255,117,195,0.45);
+}
+
+.birthday p {
+    color: #e8fff5;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    max-width: 580px;
+    margin: 0 auto;
+}
+
+.signature {
+    margin-top: 25px;
+    color: #00ff9d;
+    font-size: 16px;
+}
+
+.heart {
+    color: #ff75c3;
+    display: inline-block;
+    animation: pulse 1.2s infinite;
+}
+
+.footer {
+    text-align: center;
+    color: #43534d;
+    font-size: 10px;
+    margin-top: 30px;
+    line-height: 1.5;
+}
+
+/* CURSOR */
+.cursor {
+    display: inline-block;
+    width: 7px;
+    height: 17px;
+    background: #00ff9d;
+    animation: blink .8s infinite;
+    vertical-align: middle;
+}
+
+/* HIDDEN */
+.hidden {
+    display: none;
+}
+
+/* ANIMATIONS */
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes pulse {
+    50% {
+        transform: scale(1.25);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
     }
 
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* SMALL PHONES */
+@media (max-width: 480px) {
+
     body {
-      min-height: 100vh;
-      background: #05070a;
-      color: #00ff9d;
-      font-family: "Courier New", monospace;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
+        padding: 8px;
+        align-items: flex-start;
+        padding-top: 15px;
     }
 
     .container {
-      width: 92%;
-      max-width: 760px;
-      background: rgba(5, 10, 12, 0.95);
-      border: 1px solid #00ff9d;
-      border-radius: 14px;
-      box-shadow:
-        0 0 25px rgba(0, 255, 157, 0.15),
-        inset 0 0 25px rgba(0, 255, 157, 0.03);
-      overflow: hidden;
+        border-radius: 11px;
     }
 
     .topbar {
-      background: #0b1114;
-      padding: 10px 15px;
-      border-bottom: 1px solid #123d30;
-      color: #777;
-      font-size: 13px;
-    }
-
-    .dots {
-      display: inline-flex;
-      gap: 6px;
-      margin-right: 10px;
+        height: 38px;
+        padding: 0 10px;
+        font-size: 10px;
     }
 
     .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #555;
+        width: 8px;
+        height: 8px;
     }
 
     .terminal {
-      padding: 30px 25px;
-      min-height: 500px;
+        padding: 20px 14px;
     }
 
     .line {
-      margin: 10px 0;
-      line-height: 1.6;
-    }
-
-    .green {
-      color: #00ff9d;
-    }
-
-    .white {
-      color: #e8fff5;
-    }
-
-    .gray {
-      color: #7b8a84;
-    }
-
-    .pink {
-      color: #ff75c3;
-    }
-
-    .yellow {
-      color: #ffe66d;
-    }
-
-    .cursor {
-      display: inline-block;
-      width: 8px;
-      height: 18px;
-      background: #00ff9d;
-      animation: blink 0.8s infinite;
-      vertical-align: middle;
-    }
-
-    @keyframes blink {
-      50% {
-        opacity: 0;
-      }
+        font-size: 13px;
+        line-height: 1.55;
     }
 
     .profile {
-      border: 1px solid #164b3a;
-      padding: 18px;
-      margin: 25px 0;
-      border-radius: 8px;
-      background: rgba(0, 255, 157, 0.025);
+        padding: 13px;
+        margin: 18px 0;
+    }
+
+    .profile .line {
+        font-size: 12px;
+        line-height: 1.6;
     }
 
     .birthday {
-      text-align: center;
-      margin-top: 30px;
-      animation: fadeIn 1.5s ease;
+        margin-top: 22px;
     }
 
     .birthday h1 {
-      color: #ff75c3;
-      font-size: clamp(26px, 6vw, 46px);
-      margin-bottom: 18px;
-      text-shadow: 0 0 18px rgba(255, 117, 195, 0.45);
+        font-size: 27px;
     }
 
     .birthday p {
-      color: #e8fff5;
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.8;
-      max-width: 580px;
-      margin: auto;
+        font-size: 14px;
+        line-height: 1.7;
     }
 
     .signature {
-      margin-top: 25px;
-      color: #00ff9d;
-      font-family: "Courier New", monospace;
+        font-size: 14px;
+    }
+}
+
+/* VERY SMALL PHONES */
+@media (max-width: 350px) {
+
+    body {
+        padding: 5px;
     }
 
-    .heart {
-      color: #ff75c3;
-      animation: pulse 1.2s infinite;
-      display: inline-block;
+    .terminal {
+        padding: 16px 11px;
     }
 
-    @keyframes pulse {
-      50% {
-        transform: scale(1.25);
-      }
+    .birthday h1 {
+        font-size: 24px;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(15px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .footer {
-      text-align: center;
-      color: #43534d;
-      font-size: 11px;
-      margin-top: 30px;
-    }
-
-    @media (max-width: 600px) {
-      .terminal {
-        padding: 22px 17px;
-      }
-
-      .profile {
+    .birthday p {
         font-size: 13px;
-      }
     }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
     <div class="topbar">
-      <span class="dots">
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </span>
-      birthday_protocol.exe
+
+        <div class="dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+
+        birthday_protocol.exe
+
     </div>
 
     <div class="terminal">
 
-      <div id="boot"></div>
+        <div id="boot"></div>
 
-      <div id="content" class="hidden">
+        <div id="content" class="hidden">
 
-        <div class="line green">
-          &gt; SYSTEM STATUS: <span class="white">ONLINE ✓</span>
+            <div class="line green">
+                &gt; SYSTEM STATUS:
+                <span class="white">ONLINE ✓</span>
+            </div>
+
+            <div class="line green">
+                &gt; ACCESS LEVEL:
+                <span class="yellow">SPECIAL</span>
+            </div>
+
+            <div class="profile">
+
+                <div class="line white">
+                    USER_PROFILE.load()
+                </div>
+
+                <div class="line">
+                    Name :
+                    <span class="white">Gayatri</span>
+                </div>
+
+                <div class="line">
+                    Date of Birth :
+                    <span class="pink">27 September</span>
+                </div>
+
+                <div class="line">
+                    Status :
+                    <span class="yellow">One of a kind ✨</span>
+                </div>
+
+                <div class="line">
+                    Today's Event :
+                    <span class="pink">Birthday 🎂</span>
+                </div>
+
+            </div>
+
+            <div class="birthday">
+
+                <h1>
+                    🎂 Happy Birthday,<br>
+                    Gayatri! 🎂
+                </h1>
+
+                <p>
+                    Wishing you a wonderful birthday
+                    and an amazing year ahead.
+                    May this new chapter bring you
+                    happiness, success, unforgettable
+                    memories, and countless reasons
+                    to smile.
+                </p>
+
+                <br>
+
+                <p>
+                    And honestly...
+                    some people just have a way
+                    of making ordinary moments
+                    a little more memorable.
+                    <span class="heart">♥</span>
+                </p>
+
+                <div class="signature">
+                    — Dinesh
+                </div>
+
+            </div>
+
+            <div class="footer">
+                birthday_protocol.exe completed successfully
+            </div>
+
         </div>
-
-        <div class="line green">
-          &gt; ACCESS LEVEL: <span class="yellow">SPECIAL</span>
-        </div>
-
-        <div class="profile">
-          <div class="line white">
-            USER_PROFILE.load()
-          </div>
-
-          <br>
-
-          <div class="line">
-            Name&nbsp;&nbsp;&nbsp;&nbsp;: <span class="white">Gayatri</span>
-          </div>
-
-          <div class="line">
-            Date of Birth : <span class="pink">27 September</span>
-          </div>
-
-          <div class="line">
-            Status&nbsp;&nbsp;&nbsp;: <span class="yellow">One of a kind ✨</span>
-          </div>
-
-          <div class="line">
-            Today's Event : <span class="pink">Birthday 🎂</span>
-          </div>
-        </div>
-
-        <div class="birthday">
-
-          <h1>🎂 Happy Birthday, Gayatri! 🎂</h1>
-
-          <p>
-            Wishing you a wonderful birthday and an amazing year ahead.
-            May this new chapter bring you lots of happiness,
-            success, unforgettable memories, and countless reasons to smile.
-          </p>
-
-          <br>
-
-          <p>
-            And honestly...
-            some people just have a way of making ordinary moments
-            a little more memorable.
-            <span class="heart">♥</span>
-          </p>
-
-          <div class="signature">
-            — Dinesh
-          </div>
-
-        </div>
-
-        <div class="footer">
-          birthday_protocol.exe completed successfully
-        </div>
-
-      </div>
 
     </div>
-  </div>
 
-  <script>
+</div>
 
-    const messages = [
-      "> Initializing birthday_protocol.exe...",
-      "> Loading user profile...",
-      "> Verifying date...",
-      "> 27 September detected ✓",
-      "> Preparing something special...",
-      "> Access granted."
-    ];
+<script>
 
-    const boot = document.getElementById("boot");
-    const content = document.getElementById("content");
+const messages = [
+    "> Initializing birthday_protocol.exe...",
+    "> Loading user profile...",
+    "> Verifying date...",
+    "> 27 September detected ✓",
+    "> Preparing something special...",
+    "> Access granted."
+];
 
-    let messageIndex = 0;
+const boot = document.getElementById("boot");
+const content = document.getElementById("content");
 
-    function showNextMessage() {
+let messageIndex = 0;
 
-      if (messageIndex < messages.length) {
+function showNextMessage() {
+
+    if (messageIndex < messages.length) {
 
         const line = document.createElement("div");
+
         line.className = "line";
 
         line.innerHTML =
-          `<span class="green">${messages[messageIndex]}</span>`;
+            `<span class="green">${messages[messageIndex]}</span>`;
 
         boot.appendChild(line);
 
         messageIndex++;
 
-        setTimeout(showNextMessage, 650);
+        setTimeout(showNextMessage, 550);
 
-      } else {
+    } else {
 
         const cursor = document.createElement("span");
+
         cursor.className = "cursor";
 
         boot.appendChild(cursor);
 
         setTimeout(() => {
-          boot.style.display = "none";
-          content.classList.remove("hidden");
-        }, 1000);
-      }
+
+            boot.style.display = "none";
+
+            content.classList.remove("hidden");
+
+        }, 900);
     }
+}
 
-    showNextMessage();
+showNextMessage();
 
-  </script>
+</script>
 
 </body>
 </html>
-```
